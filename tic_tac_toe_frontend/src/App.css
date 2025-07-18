@@ -1,12 +1,14 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
+  /* Theme colors based on provided palette */
+  --primary-color: #1976d2;
+  --secondary-color: #757575;
+  --accent-color: #ffeb3b;
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
   --text-primary: #282c34;
-  --text-secondary: #61dafb;
   --border-color: #e9ecef;
-  --button-bg: #007bff;
+  --button-bg: var(--primary-color);
   --button-text: #ffffff;
 }
 
@@ -84,21 +86,103 @@
   transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Game container styles */
+.game-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive design for mobile */
+.game-title {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+/* Game board styles */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 2rem 0;
+}
+
+.square {
+  aspect-ratio: 1;
+  background: var(--bg-primary);
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.square:hover:not(:disabled) {
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+.square:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Game status styles */
+.game-status {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+/* Game controls styles */
+.game-controls {
+  margin-top: 2rem;
+}
+
+.control-button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .game-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .square {
+    font-size: 2rem;
+  }
+
+  .game-status {
+    font-size: 1.2rem;
+  }
+
+  .control-button {
+    padding: 10px 20px;
+    font-size: 1rem;
   }
 }
